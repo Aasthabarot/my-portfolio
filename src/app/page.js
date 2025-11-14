@@ -8,9 +8,7 @@ export default function Home() {
     <Box
       minH="100vh"
 
-  bgGradient="to-br"
-  gradientFrom="blue.900"
-  gradientTo="blue.700"
+
 px={4}
       py={0}
     >

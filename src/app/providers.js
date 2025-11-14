@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider } from "@chakra-ui/react";
 
-export default function Providers({ children }) {
+export default function Provider({ children }) {
   return <ChakraProvider>{children}</ChakraProvider>;
 }
