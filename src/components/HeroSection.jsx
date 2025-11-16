@@ -32,24 +32,24 @@ export default function HeroSection() {
       const material = new THREE.MeshPhongMaterial({ 
         color: color,
         transparent: true,
-        opacity: 0.6,
+        opacity: 0.4,
         emissive: color,
-        emissiveIntensity: 0.3,
+        emissiveIntensity: 0.2,
         wireframe: false
       });
       return new THREE.Mesh(geometry, material);
     };
 
-    // Create multiple rings
-    const ring1 = createRing(4, 0x00d4d4, 0.05);
+    // Create multiple rings with purple/pink theme
+    const ring1 = createRing(4, 0xA668C4, 0.05);
     ring1.rotation.x = Math.PI / 4;
     gridGroup.add(ring1);
 
-    const ring2 = createRing(3, 0x00e5e5, 0.04);
+    const ring2 = createRing(3, 0xF5D5E0, 0.04);
     ring2.rotation.y = Math.PI / 3;
     gridGroup.add(ring2);
 
-    const ring3 = createRing(5, 0x80ffff, 0.06);
+    const ring3 = createRing(5, 0x7B337E, 0.06);
     ring3.rotation.z = Math.PI / 6;
     gridGroup.add(ring3);
 
@@ -71,10 +71,10 @@ export default function HeroSection() {
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
     const particlesMaterial = new THREE.PointsMaterial({
-      color: 0x00d4d4,
+      color: 0xF5D5E0,
       size: 0.1,
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.6,
       blending: THREE.AdditiveBlending
     });
 
@@ -100,9 +100,9 @@ export default function HeroSection() {
     linesGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
     
     const linesMaterial = new THREE.LineBasicMaterial({
-      color: 0x00d4d4,
+      color: 0xA668C4,
       transparent: true,
-      opacity: 0.2
+      opacity: 0.15
     });
 
     const lines = new THREE.LineSegments(linesGeometry, linesMaterial);
@@ -112,10 +112,10 @@ export default function HeroSection() {
     const sphereGeometry = new THREE.SphereGeometry(1, 32, 32);
     const sphereMaterial = new THREE.MeshPhongMaterial({
       color: 0xffffff,
-      emissive: 0x00ffff,
-      emissiveIntensity: 0.5,
+      emissive: 0xA668C4,
+      emissiveIntensity: 0.4,
       transparent: true,
-      opacity: 0.8
+      opacity: 0.7
     });
     const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
     gridGroup.add(sphere);
@@ -123,10 +123,10 @@ export default function HeroSection() {
     // Add wireframe overlay to sphere
     const wireframeGeometry = new THREE.SphereGeometry(1.1, 16, 16);
     const wireframeMaterial = new THREE.MeshBasicMaterial({
-      color: 0x00d4d4,
+      color: 0xF5D5E0,
       wireframe: true,
       transparent: true,
-      opacity: 0.3
+      opacity: 0.25
     });
     const wireframe = new THREE.Mesh(wireframeGeometry, wireframeMaterial);
     gridGroup.add(wireframe);
@@ -134,14 +134,14 @@ export default function HeroSection() {
     scene.add(gridGroup);
 
     // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
     scene.add(ambientLight);
 
-    const pointLight1 = new THREE.PointLight(0x00ffff, 1, 100);
+    const pointLight1 = new THREE.PointLight(0xA668C4, 1, 100);
     pointLight1.position.set(10, 10, 10);
     scene.add(pointLight1);
 
-    const pointLight2 = new THREE.PointLight(0x80ffff, 1, 100);
+    const pointLight2 = new THREE.PointLight(0xF5D5E0, 1, 100);
     pointLight2.position.set(-10, -10, 10);
     scene.add(pointLight2);
 
@@ -206,7 +206,79 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <Box position="relative" minH="100vh" bg="white" overflow="hidden">
+    <Box position="relative" minH="100vh" bg="#210635" overflow="hidden">
+      {/* Main Purple Gradient Background */}
+      <Box
+        position="absolute"
+        top="0"
+        left="0"
+        w="100%"
+        h="100%"
+        bgGradient="linear(135deg, #6667AB 0%, #420D4B 50%, #7B337E 100%)"
+        zIndex="0"
+      />
+
+      {/* Decorative Background Circles */}
+      <Box
+        position="absolute"
+        top="10%"
+        right="5%"
+        w="400px"
+        h="400px"
+        borderRadius="full"
+        bg="rgba(166, 104, 196, 0.15)"
+        filter="blur(60px)"
+        zIndex="1"
+      />
+      <Box
+        position="absolute"
+        bottom="15%"
+        right="15%"
+        w="300px"
+        h="300px"
+        borderRadius="full"
+        bg="rgba(123, 51, 126, 0.2)"
+        filter="blur(50px)"
+        zIndex="1"
+      />
+      <Box
+        position="absolute"
+        top="30%"
+        right="25%"
+        w="250px"
+        h="250px"
+        borderRadius="full"
+        bg="rgba(102, 103, 171, 0.12)"
+        filter="blur(40px)"
+        zIndex="1"
+      />
+
+      {/* Wave Border Decorations */}
+      <Box
+        position="absolute"
+        top="20%"
+        right="10%"
+        w="200px"
+        h="200px"
+        border="2px solid"
+        borderColor="rgba(245, 213, 224, 0.2)"
+        borderRadius="50% 40% 60% 50%"
+        zIndex="1"
+        animation="morphWave 8s ease-in-out infinite"
+      />
+      <Box
+        position="absolute"
+        bottom="25%"
+        right="30%"
+        w="150px"
+        h="150px"
+        border="2px solid"
+        borderColor="rgba(166, 104, 196, 0.15)"
+        borderRadius="60% 50% 40% 60%"
+        zIndex="1"
+        animation="morphWave 10s ease-in-out infinite reverse"
+      />
+
       {/* Three.js Canvas Background */}
       <Box
         position="absolute"
@@ -214,8 +286,8 @@ export default function HeroSection() {
         right="0"
         w={{ base: '100%', md: '55%' }}
         h="100vh"
-        zIndex="0"
-        opacity={{ base: 0.4, md: 0.7 }}
+        zIndex="2"
+        opacity="0.4"
       >
         <canvas
           ref={canvasRef}
@@ -226,19 +298,6 @@ export default function HeroSection() {
         />
       </Box>
 
-      {/* Gradient Overlay */}
-      <Box
-        position="absolute"
-        top="0"
-        left="0"
-        w="100%"
-        h="100%"
-        bgGradient="linear(to-br, cyan.50, transparent, blue.50)"
-        opacity="0.3"
-        zIndex="0"
-        pointerEvents="none"
-      />
-
       {/* Main Content */}
       <Container
         maxW="container.xl"
@@ -246,7 +305,7 @@ export default function HeroSection() {
         display="flex"
         alignItems="center"
         position="relative"
-        zIndex="1"
+        zIndex="3"
       >
         <VStack
           align="flex-start"
@@ -256,11 +315,11 @@ export default function HeroSection() {
         >
           {/* Label with line */}
           <HStack>
-            <Box w="40px" h="1px" bgGradient="linear(to-r, cyan.400, transparent)" />
+            <Box w="40px" h="1px" bgGradient="linear(to-r, #F5D5E0, transparent)" />
             <Text
               fontSize={{ base: 'xs', md: 'sm' }}
               letterSpacing="0.25em"
-              color="gray.500"
+              color="#F5D5E0"
               fontWeight="600"
               textTransform="uppercase"
             >
@@ -273,7 +332,7 @@ export default function HeroSection() {
             fontSize={{ base: '4xl', md: '6xl', lg: '7xl' }}
             fontWeight="800"
             lineHeight="1.1"
-            color="gray.900"
+            color="white"
           >
             Full Stack Developer
             <br />
@@ -281,12 +340,12 @@ export default function HeroSection() {
           </Heading>
 
           {/* Divider */}
-          <Box w="100px" h="3px" bgGradient="linear(to-r, cyan.400, blue.400)" />
+          <Box w="100px" h="3px" bgGradient="linear(to-r, #7B337E, #A668C4)" />
 
           {/* Description */}
           <Text
             fontSize={{ base: 'md', md: 'lg' }}
-            color="gray.600"
+            color="#F5D5E0"
             maxW="500px"
             lineHeight="1.8"
           >
@@ -298,16 +357,16 @@ export default function HeroSection() {
           <HStack spacing={4} flexWrap="wrap" pt={4}>
             <Button
               size="lg"
-              bgGradient="linear(to-r, cyan.500, cyan.400)"
+              bgGradient="linear(to-r, #7B337E, #A668C4)"
               color="white"
               px={8}
               py={6}
               borderRadius="full"
               fontWeight="600"
               _hover={{
-                bgGradient: "linear(to-r, cyan.600, cyan.500)",
+                bgGradient: "linear(to-r, #A668C4, #7B337E)",
                 transform: "translateY(-2px)",
-                boxShadow: "0 10px 30px rgba(0, 212, 212, 0.4)"
+                boxShadow: "0 10px 30px rgba(166, 104, 196, 0.4)"
               }}
               transition="all 0.3s"
             >
@@ -315,17 +374,18 @@ export default function HeroSection() {
             </Button>
             <Button
               size="lg"
-              bg="white"
-              color="gray.800"
+              bg="rgba(255, 255, 255, 0.1)"
+              color="white"
               px={8}
               py={6}
               borderRadius="full"
               fontWeight="600"
               border="2px solid"
-              borderColor="gray.200"
+              borderColor="rgba(245, 213, 224, 0.3)"
+              backdropFilter="blur(10px)"
               _hover={{
-                borderColor: "cyan.400",
-                color: "cyan.500",
+                borderColor: "#F5D5E0",
+                bg: "rgba(255, 255, 255, 0.15)",
                 transform: "translateY(-2px)"
               }}
               transition="all 0.3s"
@@ -343,14 +403,14 @@ export default function HeroSection() {
         left="50%"
         transform="translateX(-50%)"
         spacing={2}
-        zIndex="1"
+        zIndex="3"
         animation="bounce 2s infinite"
       >
         <Box
           w="24px"
           h="40px"
           border="2px solid"
-          borderColor="gray.300"
+          borderColor="rgba(245, 213, 224, 0.5)"
           borderRadius="20px"
           display="flex"
           alignItems="flex-start"
@@ -360,12 +420,12 @@ export default function HeroSection() {
           <Box
             w="3px"
             h="8px"
-            bg="cyan.400"
+            bg="#F5D5E0"
             borderRadius="2px"
             animation="scrollWheel 1.5s infinite"
           />
         </Box>
-        <Text fontSize="xs" letterSpacing="0.2em" color="gray.400" fontWeight="600">
+        <Text fontSize="xs" letterSpacing="0.2em" color="rgba(245, 213, 224, 0.7)" fontWeight="600">
           SCROLL
         </Text>
       </VStack>
@@ -374,24 +434,24 @@ export default function HeroSection() {
       <Box
         position="absolute"
         top="20%"
-        left="-100%"
+        left="5%"
         w="100px"
         h="8px"
-        bg="cyan.400"
+        bg="rgba(166, 104, 196, 0.4)"
         borderRadius="full"
-        opacity="0.4"
+        opacity="0.6"
         animation="float 3s ease-in-out infinite"
         zIndex="1"
       />
       <Box
         position="absolute"
         top="60%"
-        left="-100%"
+        left="8%"
         w="6px"
         h="6px"
-        bg="cyan.300"
+        bg="rgba(245, 213, 224, 0.5)"
         borderRadius="full"
-        opacity="0.4"
+        opacity="0.6"
         animation="float 3s ease-in-out infinite 1s"
         zIndex="1"
       />
@@ -408,6 +468,16 @@ export default function HeroSection() {
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-20px); }
+        }
+        @keyframes morphWave {
+          0%, 100% { 
+            border-radius: 50% 40% 60% 50%;
+            transform: rotate(0deg) scale(1);
+          }
+          50% { 
+            border-radius: 40% 60% 50% 40%;
+            transform: rotate(180deg) scale(1.05);
+          }
         }
       `}</style>
     </Box>
