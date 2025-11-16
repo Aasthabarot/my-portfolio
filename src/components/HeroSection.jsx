@@ -306,12 +306,12 @@ export default function HeroSection() {
         alignItems="center"
         position="relative"
         zIndex="3"
+        px={{ base: 6, md: 12 }}
       >
         <VStack
           align="flex-start"
           spacing={6}
           maxW={{ base: '100%', md: '600px' }}
-          pl={{ base: 4, md: 8 }}
         >
           {/* Label with line */}
           <HStack>
@@ -357,7 +357,7 @@ export default function HeroSection() {
           <HStack spacing={4} flexWrap="wrap" pt={4}>
             <Button
               size="lg"
-              bgGradient="linear(to-r, #7B337E, #A668C4)"
+              bg="rgba(214, 139, 179, 0.1)"
               color="white"
               px={8}
               py={6}
