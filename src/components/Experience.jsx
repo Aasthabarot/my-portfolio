@@ -419,7 +419,7 @@ export default function ExperienceSection() {
         }
 
         .main-title {
-          font-size: clamp(2.5rem, 7vw, 5rem);
+          font-size:clamp(32px, 5vw, 48px);
           font-weight: 900;
           color: white;
           margin: 0 0 20px 0;

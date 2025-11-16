@@ -148,8 +148,8 @@ export default function ContactForm() {
             </div>
 
             <h1 style={{
-              fontSize: 'clamp(2rem, 6vw, 4.5rem)',
-              fontWeight: '800',
+ fontSize: 'clamp(32px, 5vw, 48px)',
+               fontWeight: '800',
               color: 'white',
               letterSpacing: 'tight',
               lineHeight: '1.1',
@@ -311,7 +311,7 @@ export default function ContactForm() {
                   <div>
                     <p style={{ fontSize: '12px', color: 'rgba(245, 213, 224, 0.7)', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Phone</p>
                     <p style={{ fontSize: '14px', color: 'white', fontWeight: '600' }}>
-                      +91 XXXX XXXXXX
+                      +91 9104578558
                     </p>
                   </div>
                 </div>
